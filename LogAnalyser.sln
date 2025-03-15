@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser", "LogAnalyser\LogAnalyser.csproj", "{D0219ECF-F339-4773-A673-DE0B4A75957A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Api", "LogAnalyser.Api\LogAnalyser.Api.csproj", "{D0219ECF-F339-4773-A673-DE0B4A75957A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Persistence", "LogAnalyser.Persistence\LogAnalyser.Persistence.csproj", "{51C64028-5BCB-47C9-A0C4-E8D7FEB63C59}"
 EndProject

@@ -1,4 +1,4 @@
-using LogAnalyser.Maps;
+using LogAnalyser.Api.Maps;
 using LogAnalyser.Persistence;
 using LogAnalyser.Persistence.Configuration;
 using LogAnalyser.PersistenceContracts;

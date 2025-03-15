@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 
-namespace LogAnalyser.Maps;
+namespace LogAnalyser.Api.Maps;
 
 public static class LogModelEndpoints
 {
