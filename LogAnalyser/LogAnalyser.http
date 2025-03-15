@@ -1,0 +1,6 @@
+@LogAnalyser_HostAddress = http://localhost:5232
+
+GET {{LogAnalyser_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
