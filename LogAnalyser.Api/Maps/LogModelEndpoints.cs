@@ -1,6 +1,7 @@
 ﻿using LogAnalyser.Api.Validators;
 using LogAnalyser.Entities;
 using LogAnalyser.Entities.Enums;
+using LogAnalyser.Repositories;
 using LogAnalyser.Repositories.Contracts;
 using LogAnalyser.Shared.DTOs;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -102,5 +103,14 @@ public static class LogModelEndpoints
                     ? Results.Problem("No service found.", statusCode: 404)
                     : Results.Ok(new { AverageTime = averageTime });
             });
+
+        routes.MapGet("/api/getMostFrequentIP", async ([FromServices] ILogRepository logRepository) =>
+        {
+            var mostFrequentIP = await logRepository.GetMostFrequentIP();
+
+            return Results.Ok(mostFrequentIP);
+        });
+
+        routes.MapGet("/api/getMostFrequentErros", async ([FromServices] ILogRepository logRepository) => { });
     }
 }
