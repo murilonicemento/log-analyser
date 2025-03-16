@@ -6,7 +6,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Persistence", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Entities", "LogAnalyser.Entities\LogAnalyser.Entities.csproj", "{0B5A3E56-0BDF-48BA-AD64-9145E65CF558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.PersistenceContracts", "LogAnalyser.PersistenceContracts\LogAnalyser.PersistenceContracts.csproj", "{556C22C2-5BBD-4FC4-A28C-E1397717CD2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Persistence.Contracts", "LogAnalyser.Persistence.Contracts\LogAnalyser.Persistence.Contracts.csproj", "{556C22C2-5BBD-4FC4-A28C-E1397717CD2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Shared", "LogAnalyser.Shared\LogAnalyser.Shared.csproj", "{D324F334-55FB-48EE-9197-CF5248E550E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Repositories.Contracts", "LogAnalyser.Repositories.Contracts\LogAnalyser.Repositories.Contracts.csproj", "{CD4C0394-7C49-4742-9E2C-7343FED6A4CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyser.Repositories", "LogAnalyser.Repositories\LogAnalyser.Repositories.csproj", "{5A142F19-6F20-4171-A18F-4DC43018708A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +36,17 @@ Global
 		{556C22C2-5BBD-4FC4-A28C-E1397717CD2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{556C22C2-5BBD-4FC4-A28C-E1397717CD2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{556C22C2-5BBD-4FC4-A28C-E1397717CD2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D324F334-55FB-48EE-9197-CF5248E550E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D324F334-55FB-48EE-9197-CF5248E550E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D324F334-55FB-48EE-9197-CF5248E550E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D324F334-55FB-48EE-9197-CF5248E550E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD4C0394-7C49-4742-9E2C-7343FED6A4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4C0394-7C49-4742-9E2C-7343FED6A4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4C0394-7C49-4742-9E2C-7343FED6A4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4C0394-7C49-4742-9E2C-7343FED6A4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A142F19-6F20-4171-A18F-4DC43018708A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A142F19-6F20-4171-A18F-4DC43018708A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A142F19-6F20-4171-A18F-4DC43018708A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A142F19-6F20-4171-A18F-4DC43018708A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
