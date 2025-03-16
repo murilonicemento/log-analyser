@@ -7,12 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="7.3.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\LogAnalyser.Persistence\LogAnalyser.Persistence.csproj" />
+      <ProjectReference Include="..\LogAnalyser.Repositories.Contracts\LogAnalyser.Repositories.Contracts.csproj" />
+      <ProjectReference Include="..\LogAnalyser.Repositories\LogAnalyser.Repositories.csproj" />
+      <ProjectReference Include="..\LogAnalyser.Shared\LogAnalyser.Shared.csproj" />
     </ItemGroup>
 
 </Project>
