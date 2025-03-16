@@ -113,7 +113,7 @@ public static class LogModelEndpoints
 
         routes.MapGet("/api/getMostFrequentErrors", async ([FromServices] ILogRepository logRepository) =>
         {
-            var errors = await logRepository.GetMostFrequentErros();
+            var errors = await logRepository.GetMostFrequentErrors();
             var mostFrequentErrorsDtos =
                 errors.Select(error => BsonSerializer.Deserialize<MostFrequentErrorsDTO>(error));
 
