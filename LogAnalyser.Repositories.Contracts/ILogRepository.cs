@@ -12,4 +12,6 @@ public interface ILogRepository
     public Task<List<BsonDocument>> GetLogsCountByPeriod(DateTime startDate, DateTime endDate);
 
     public Task<double?> GetAverageTimeByService(string service);
+
+    public Task<string> GetMostFrequentIP();
 }
