@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LogAnalyser.Persistence.Contracts\LogAnalyser.Persistence.Contracts.csproj" />
+      <ProjectReference Include="..\LogAnalyser.Repositories.Contracts\LogAnalyser.Repositories.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
