@@ -57,4 +57,21 @@ public class LogRepository : ILogRepository
 
         return await _logAnalyserContext.Log.Aggregate<BsonDocument>(pipeline).ToListAsync();
     }
+
+    public async Task<double?> GetAverageTimeByService(string service)
+    {
+        var pipeline = new[]
+        {
+            new BsonDocument("$match", new BsonDocument("Service", new BsonDocument("$eq", service))),
+            new BsonDocument("$group", new BsonDocument
+            {
+                { "_id", BsonNull.Value },
+                { "AverageTime", new BsonDocument("$avg", "$OperationTime") }
+            })
+        };
+
+        var result = await _logAnalyserContext.Log.Aggregate<BsonDocument>(pipeline).FirstOrDefaultAsync();
+
+        return result?["AverageTime"].ToDouble();
+    }
 }
