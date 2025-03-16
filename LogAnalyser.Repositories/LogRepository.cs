@@ -96,4 +96,19 @@ public class LogRepository : ILogRepository
 
         return result?["_id"].ToString() ?? string.Empty;
     }
+
+    public async Task<List<BsonDocument>> GetMostFrequentErrors()
+    {
+        var pipeline = new[]
+        {
+            new BsonDocument("$group", new BsonDocument
+            {
+                { "_id", "$Message" },
+                { "Count", new BsonDocument("$sum", 1) }
+            }),
+            new BsonDocument("$sort", new BsonDocument("Count", -1))
+        };
+
+        return await _logAnalyserContext.Log.Aggregate<BsonDocument>(pipeline).ToListAsync();
+    }
 }
