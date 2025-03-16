@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using LogAnalyser.Entities;
 using LogAnalyser.Persistence.Configuration;
-using LogAnalyser.PersistenceContracts;
+using LogAnalyser.Persistence.Contracts;
 using MongoDB.Driver;
 
 namespace LogAnalyser.Persistence;

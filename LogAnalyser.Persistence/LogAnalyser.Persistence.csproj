@@ -13,7 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\LogAnalyser.Entities\LogAnalyser.Entities.csproj" />
-      <ProjectReference Include="..\LogAnalyser.PersistenceContracts\LogAnalyser.PersistenceContracts.csproj" />
+      <ProjectReference Include="..\LogAnalyser.Persistence.Contracts\LogAnalyser.Persistence.Contracts.csproj" />
     </ItemGroup>
 
 </Project>
