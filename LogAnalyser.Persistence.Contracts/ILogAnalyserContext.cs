@@ -1,7 +1,7 @@
 ﻿using LogAnalyser.Entities;
 using MongoDB.Driver;
 
-namespace LogAnalyser.PersistenceContracts;
+namespace LogAnalyser.Persistence.Contracts;
 
 public interface ILogAnalyserContext
 {
