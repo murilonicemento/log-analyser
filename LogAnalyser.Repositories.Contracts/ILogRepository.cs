@@ -10,4 +10,6 @@ public interface ILogRepository
     public Task<List<Log>> GetLogsByPeriod(DateTime startDate, DateTime endDate, LogLevelOptions? logLevel);
 
     public Task<List<BsonDocument>> GetLogsCountByPeriod(DateTime startDate, DateTime endDate);
+
+    public Task<double?> GetAverageTimeByService(string service);
 }
