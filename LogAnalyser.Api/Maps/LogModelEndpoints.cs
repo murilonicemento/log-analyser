@@ -92,5 +92,15 @@ public static class LogModelEndpoints
 
             return Results.Ok(logEnumerable);
         });
+
+        routes.MapGet("/api/getAverageTimeByService",
+            async ([FromQuery] string service, [FromServices] ILogRepository logRepository) =>
+            {
+                var averageTime = await logRepository.GetAverageTimeByService(service);
+
+                return averageTime is null
+                    ? Results.Problem("No service found.", statusCode: 404)
+                    : Results.Ok(new { AverageTime = averageTime });
+            });
     }
 }
