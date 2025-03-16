@@ -3,7 +3,9 @@ using LogAnalyser.Entities;
 using LogAnalyser.Entities.Enums;
 using LogAnalyser.Repositories.Contracts;
 using LogAnalyser.Shared.DTOs;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson.Serialization;
 
 namespace LogAnalyser.Api.Maps;
 
@@ -39,18 +41,56 @@ public static class LogModelEndpoints
                 return Results.Created();
             });
 
-        routes.MapGet("/api/errorsByPeriod",
-            async ([FromQuery] DateTime startDate, [FromQuery] DateTime endDate,
+        routes.MapGet("/api/logsByPeriod",
+            async ([FromQuery] DateTime startDate, [FromQuery] DateTime endDate, [FromQuery] string? logLevel,
                 [FromServices] ILogRepository logRepository) =>
             {
-                if (startDate >= endDate)
+                if (startDate > endDate)
                 {
-                    return Results.Problem("Start date must be less then end date");
+                    return Results.Problem("Start date must be less then end date", statusCode: 400);
                 }
 
-                var logs = await logRepository.GetLogsByPeriod(startDate, endDate);
+                if (logLevel is null)
+                {
+                    var logs = await logRepository.GetLogsByPeriod(startDate, endDate, null);
 
-                return Results.Ok(logs);
+                    return Results.Ok(logs);
+                }
+
+                var filterByLogLevel =
+                    Enum.TryParse(typeof(LogLevelOptions), logLevel, true, out var result);
+
+                if (!filterByLogLevel || result is null)
+                {
+                    return Results.Problem("Log level is not valid.", statusCode: 400);
+                }
+
+                var logList = await logRepository.GetLogsByPeriod(startDate, endDate, (LogLevelOptions)result);
+
+                return Results.Ok(logList);
             });
+
+        routes.MapGet("/api/logsCountByPeriod", async ([FromQuery] DateTime startDate, [FromQuery] DateTime endDate,
+            [FromServices] ILogRepository logRepository) =>
+        {
+            if (startDate > endDate)
+            {
+                return Results.Problem("Start date must be less then end date", statusCode: 400);
+            }
+
+            var logBsonDocumentList = await logRepository.GetLogsCountByPeriod(startDate, endDate);
+            var logEnumerable = logBsonDocumentList
+                .Select(log =>
+                {
+                    var obj = BsonSerializer.Deserialize<LogCountDTO>(log);
+
+                    return new
+                    {
+                        Id = obj.Id.ToString(), obj.Count
+                    };
+                });
+
+            return Results.Ok(logEnumerable);
+        });
     }
 }
