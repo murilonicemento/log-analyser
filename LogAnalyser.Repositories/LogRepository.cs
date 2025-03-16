@@ -70,8 +70,30 @@ public class LogRepository : ILogRepository
             })
         };
 
-        var result = await _logAnalyserContext.Log.Aggregate<BsonDocument>(pipeline).FirstOrDefaultAsync();
+        var result = await _logAnalyserContext.Log
+            .Aggregate<BsonDocument>(pipeline)
+            .FirstOrDefaultAsync();
 
         return result?["AverageTime"].ToDouble();
+    }
+
+    public async Task<string> GetMostFrequentIP()
+    {
+        var pipeline = new[]
+        {
+            new BsonDocument("$group", new BsonDocument
+            {
+                { "_id", "$OrigemIP" },
+                { "Count", new BsonDocument("$sum", 1) }
+            }),
+            new BsonDocument("$sort", new BsonDocument("Count", -1)),
+            new BsonDocument("$limit", 1)
+        };
+
+        var result = await _logAnalyserContext.Log
+            .Aggregate<BsonDocument>(pipeline)
+            .FirstOrDefaultAsync();
+
+        return result?["_id"].ToString() ?? string.Empty;
     }
 }
