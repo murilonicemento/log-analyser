@@ -111,6 +111,13 @@ public static class LogModelEndpoints
             return Results.Ok(mostFrequentIP);
         });
 
-        routes.MapGet("/api/getMostFrequentErros", async ([FromServices] ILogRepository logRepository) => { });
+        routes.MapGet("/api/getMostFrequentErrors", async ([FromServices] ILogRepository logRepository) =>
+        {
+            var errors = await logRepository.GetMostFrequentErros();
+            var mostFrequentErrorsDtos =
+                errors.Select(error => BsonSerializer.Deserialize<MostFrequentErrorsDTO>(error));
+
+            return Results.Ok(mostFrequentErrorsDtos);
+        });
     }
 }
