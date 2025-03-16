@@ -1,6 +1,33 @@
 @LogAnalyser_HostAddress = http://localhost:5232
 
-GET {{LogAnalyser_HostAddress}}/weatherforecast/
-Accept: application/json
-
 ###
+POST {{LogAnalyser_HostAddress}}/api/register
+Content-Type: application/json
+
+{
+  "timestamp": "2025-03-16T12:00:00Z",
+  "logLevel": "Error",
+  "message": "Erro crítico no sistema",
+  "service": "AuthService",
+  "origemIP": "192.168.1.1",
+  "operationTime": 120
+}
+
+### Buscar logs por período
+GET {{LogAnalyser_HostAddress}}/api/logsByPeriod?startDate=2025-03-15T00:00:00Z&endDate=2025-03-16T23:59:59Z
+
+### Buscar logs por período e nível de log
+GET {{LogAnalyser_HostAddress}}/api/logsByPeriod?startDate=2025-03-15T00:00:00Z&endDate=2025-03-16T23:59:59Z&
+    logLevel=Error
+
+### Contar logs por período
+GET {{LogAnalyser_HostAddress}}/api/logsCountByPeriod?startDate=2025-03-15T00:00:00Z&endDate=2025-03-16T23:59:59Z
+
+### Tempo médio de operação por serviço
+GET {{LogAnalyser_HostAddress}}/api/getAverageTimeByService?service=AuthService
+
+### IP mais frequente nos logs
+GET {{LogAnalyser_HostAddress}}/api/getMostFrequentIP
+
+### Erros mais frequentes
+GET {{LogAnalyser_HostAddress}}/api/getMostFrequentErrors
