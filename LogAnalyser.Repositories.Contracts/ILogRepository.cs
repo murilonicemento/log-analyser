@@ -14,4 +14,6 @@ public interface ILogRepository
     public Task<double?> GetAverageTimeByService(string service);
 
     public Task<string> GetMostFrequentIP();
+
+    public Task<List<BsonDocument>> GetMostFrequentErrors();
 }
