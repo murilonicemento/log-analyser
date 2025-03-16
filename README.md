@@ -9,7 +9,6 @@ erros e comportamentos suspeitos.
 
 - **ASP.NET Core**
 - **MongoDB**
-- **Docker**
 - **Swagger**
 
 ## **Como Executar o Projeto**
