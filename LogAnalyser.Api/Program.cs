@@ -1,7 +1,9 @@
 using LogAnalyser.Api.Maps;
 using LogAnalyser.Persistence;
 using LogAnalyser.Persistence.Configuration;
-using LogAnalyser.PersistenceContracts;
+using LogAnalyser.Persistence.Contracts;
+using LogAnalyser.Repositories;
+using LogAnalyser.Repositories.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<LogAnalyserConfiguration>(builder.Configuration.GetSection("LogAnalyserConfiguration"));
 
 builder.Services.AddSingleton<ILogAnalyserContext, LogAnalyserContext>();
+builder.Services.AddScoped<ILogRepository, LogRepository>();
 
 var app = builder.Build();
 
