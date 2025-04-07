@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  api:
+    build: ./LogAnalyser.api
+    container_name: log-analyser
+    ports:
+      - "5000:8080"
+      - "5232:8081"
+    depends_on:
+      - mongodb
+    environment:
+      - ASPTNETCORE_ENVIRONMENT=Development
+      - LogAnalyserConfiguration__Host=mongodb
+      - LogAnalyserConfiguration__Port=27017
+      - LogAnalyserConfiguration__Database=LogAnalyser
+    restart: unless-stopped
+  mongodb:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    restart: unless-stopped
+volumes: mongodata
