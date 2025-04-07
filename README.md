@@ -9,7 +9,6 @@ erros e comportamentos suspeitos.
 
 - **ASP.NET Core**
 - **MongoDB**
-- **Docker**
 - **Swagger**
 
 ## **Como Executar o Projeto**
@@ -37,23 +36,7 @@ Crie um arquivo **`appsettings.json`** e configure a string de conexão com o Mo
 }
 ```
 
-### **3. Executar com Docker**
-
-Certifique-se de ter o **Docker** instalado e execute:
-
-```sh
-docker-compose up --build
-```
-
-Isso criará os containers para a API e o MongoDB.
-
-Para parar os containers:
-
-```sh
-docker-compose down
-```
-
-### **4. Testar e acessar a API**
+### **3. Testar e acessar a API**
 
 Acesse a documentação do Swagger em:
 
