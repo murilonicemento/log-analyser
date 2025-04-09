@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   api:
-    build: ./LogAnalyser.api
+    build: ./LogAnalyser.Api
     container_name: log-analyser
     ports:
       - "5000:8080"
